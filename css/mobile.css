@@ -66,16 +66,23 @@ body[data-view="booking"] header.top .ghost.solid.book-link{display:none}
   .links a:focus-visible{outline:2px solid #fff;outline-offset:4px;border-radius:4px}
 }
 
+/* how-it-works cards: the Apple-style top rule had a stray curved corner */
+.how li{border-radius:0}
+
+/* stepper labels were picking up <em> italics */
+.stepper .lbl{font-style:normal}
+
 /* ---------- phones and small tablets ---------- */
 @media(max-width:860px){
   /* the bar already carries Book now, so no floating bottom button */
   .sticky-cta{display:none!important}
   /* landing hero: clear type, one search bar, nothing cut off */
-  .hero{padding-top:calc(var(--bar-h) + 36px);padding-inline:20px}
-  .hero h1{font-size:clamp(38px,11.5vw,56px);line-height:1.02;text-shadow:0 2px 24px rgba(0,0,0,.35)}
-  .hero .sub{text-wrap:balance;font-size:17px;line-height:1.4;max-width:30ch;margin-inline:auto;text-shadow:0 1px 14px rgba(0,0,0,.45);opacity:1}
-  .hero-copy{text-align:center}
-  .hero-bottom{padding-bottom:calc(20px + env(safe-area-inset-bottom,0px));gap:14px}
+  .hero{justify-content:center;gap:clamp(22px,4.2vh,34px);padding:var(--bar-h) 20px calc(var(--bar-h) + env(safe-area-inset-bottom,0px))}
+  .hero-copy{text-align:center;padding:0;margin:0}
+  .hero h1{font-size:clamp(38px,11.5vw,56px);line-height:1.02;text-shadow:0 2px 24px rgba(0,0,0,.4)}
+  .hero .sub{text-wrap:balance;font-size:17px;line-height:1.4;max-width:30ch;margin-inline:auto;text-shadow:0 1px 14px rgba(0,0,0,.5);opacity:1}
+  .hero-bottom{padding-bottom:0;gap:14px}
+  .hero-media::after{background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.4) 30%,rgba(0,0,0,.48) 65%,rgba(0,0,0,.72))}
   .prompt{padding:8px;border-radius:99px}
   .prompt-row{padding:4px 4px 4px 14px}
   .prompt-row input{font-size:16px;min-height:44px}
@@ -129,3 +136,39 @@ body[data-view="booking"] header.top .ghost.solid.book-link{display:none}
 @media(max-height:520px) and (orientation:landscape){
   .m-main a{font-size:22px;padding:8px 0}.m-sub a{padding:7px 0}.m-label{margin-top:14px}
 }
+
+/* ---------- "Every journey, every story." carousel (Apple TV style) ---------- */
+.sec.stories{--stw:min(82vw,420px);--stgap:14px;background:#f5f5f7;padding-inline:0;overflow:hidden}
+.stories>h2,.stories>.lead{padding-inline:20px}
+.sec.stories>.st-track{position:relative;max-width:none;margin:0;display:flex;gap:var(--stgap);overflow-x:auto;overscroll-behavior-x:contain;
+  scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;text-align:left;
+  padding:4px calc((100% - var(--stw))/2) 8px;scroll-padding-inline:calc((100% - var(--stw))/2);outline-offset:-4px}
+.st-track::-webkit-scrollbar{display:none}
+.st-card{flex:0 0 var(--stw);scroll-snap-align:center;scroll-snap-stop:always;transition:opacity .5s ease}
+.st-ready .st-card:not(.on){opacity:.5}
+.st-media{aspect-ratio:1/1;border-radius:26px;overflow:hidden;background:#d2d2d7;box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.st-media img{display:block;width:100%;height:100%;object-fit:cover;object-position:var(--pos,50% 50%)}
+.st-cap{display:flex;align-items:center;gap:14px;margin:16px 4px 0}
+.st-cap p{margin:0;font-size:15px;line-height:1.35;color:#6e6e73;text-wrap:balance}
+.st-cap b{color:#1d1d1f;font-weight:600}
+.stories .st-pill{flex:none;display:inline-flex;align-items:center;justify-content:center;min-height:40px;padding:0 18px;border-radius:99px;background:#1d1d1f;color:#fff;
+  font:600 14px/1 var(--display);letter-spacing:-.01em;text-decoration:none;white-space:nowrap;transition:background .2s,transform .3s var(--ease2)}
+.stories .st-pill:hover{background:#000}.stories .st-pill:active{transform:scale(.97)}
+.stories .st-pill:focus-visible,.st-track:focus-visible{outline:2px solid #0b0b0c;outline-offset:3px}
+.st-ctrl{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:22px;max-width:none}
+.st-dots{display:flex;align-items:center;gap:2px}
+.stories .st-dot{position:relative;width:7px;height:7px;min-height:0;padding:0;border:0;border-radius:99px;background:#c7c7cc;overflow:visible;margin:0 5px;transition:width .45s var(--ease2),margin .45s var(--ease2)}
+.st-dot::after{content:"";position:absolute;inset:-18px -7px}  /* 44px tap area */
+.st-dot i{position:absolute;inset:0;border-radius:inherit;background:#1d1d1f;transform:scaleX(0);transform-origin:left center}
+.stories .st-dot.on{width:44px}
+.st-dot.on i{animation:stfill 6s linear forwards}
+.st-hold .st-dot.on i{animation-play-state:paused}
+.st-static .st-dot.on i{animation:none;transform:none}
+@keyframes stfill{to{transform:scaleX(1)}}
+@media(max-width:380px){.st-cap{flex-direction:column;align-items:flex-start;gap:10px}}
+@media(min-width:861px){
+  .sec.stories{--stw:min(52vw,640px);--stgap:20px}
+  .st-media{aspect-ratio:5/4;border-radius:30px}
+  .st-cap p{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){.st-card{transition:none}.st-dot.on i{animation:none;transform:none}}

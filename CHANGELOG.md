@@ -1,5 +1,20 @@
 # Changelog
 
+## v44
+- "Where we hand over": 12 stacked city cards replaced by one switch (Metro Manila / Outside Metro Manila) and a row of city pills; tapping a pill starts the booking from that city. Section is midnight black.
+- "Simple, upfront pricing": 7 tiles replaced by the two day rates as big numbers, one "Book 3 days, get 1 free" line, and one quiet line of extras (child seat, additional driver, different return, 12 hours). Shorter section copy.
+- Styles are at the bottom of `css/lime.css`; version label v44.
+
+## v43
+- Carousel is now an endless loop: cards are cloned on both sides, so the left is never empty and it keeps going forward forever. Swipe, dots and arrow keys all wrap. Pause/play button removed (it still pauses on hover, focus, off-screen and for reduced motion).
+- New `css/lime.css` (delete it and its tags to get v42): palette Midnight Black #0B0B0C, Pure White #FFFFFF, Lime Green #C6F432; serif-italic accent words (Instrument Serif) in the hero and headings; dark carousel section with a lime glow; lime go button.
+- Consistency: wordmark "ride" is lime in header and footer (was yellow, green and a second green); footer is midnight black; all limes are #C6F432 (was #C9F03A); Apple-blue focus rings now follow the palette; version label v43.
+
+## v42
+- Landing hero on phones: headline, line of text and search box are now one group centred in the middle of the screen (it was split top and bottom), with a slightly stronger shade so the text stays readable over the car.
+- New "Every journey, every story." carousel on the landing page, styled after the Apple TV carousel on apple.com/ph: swipe or tap the dots, the next card peeks in, the active dot fills as a timer and moves to the next card, a pause button, arrow keys work, pauses when off-screen, on hover and for reduced motion. Cards: your rates poster, the Cabatuan family photo, the Xpander and its interior. New files: `js/stories.js`, `assets/promo-rates.webp`, `assets/family-cabatuan.webp`.
+- Consistency fixes: stepper labels no longer italic, stray curved corner on the "Book in three taps" cards removed, version label v42.
+
 ## v41
 - Mobile pass modelled on apple.com/ph and tesla.com. New `css/mobile.css` and `js/nav.js` (delete both and their tags to get v40 back).
 - One slim header on every page: logo, a white "Book now" pill and a two-line menu button. Tapping it opens a full-screen black menu with large type (Book the Xpander, Track booking, The car, Rates, then Explore links), staggered fade-in, X close, Esc to close, page scroll locked while open. On the landing page the bar is clear over the photo and turns black once you scroll.

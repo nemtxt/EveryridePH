@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#000000">
-  <meta name="app-version" content="v41">
+  <meta name="app-version" content="v44">
   <meta name="description" content="Rent the Mitsubishi Xpander GLS across Luzon. Pick where and when on a calendar, see your price, and book as a guest.">
   <meta property="og:title" content="Everyride | Rent with ease. Drive everywhere.">
   <meta property="og:description" content="One Mitsubishi Xpander GLS, seven seats, Luzon pickups. Book as a guest in under a minute.">
@@ -15,15 +15,17 @@
   <link rel="icon" href="assets/everyride-logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/site.css">
   <link rel="stylesheet" href="css/polish.css">
   <link rel="stylesheet" href="css/vibe.css">
   <link rel="stylesheet" href="css/apple.css">
   <link rel="stylesheet" href="css/responsive.css">
   <link rel="stylesheet" href="css/mobile.css">
+  <link rel="stylesheet" href="css/lime.css">
   <script src="js/core.js" defer></script>
   <script src="js/nav.js" defer></script>
+  <script src="js/stories.js" defer></script>
   <script src="js/fx.js" defer></script>
   <script src="js/home.js" defer></script>
 </head>
@@ -84,6 +86,29 @@
       <div class="pills"><a class="pill solid" href="booking.html">Book now</a><button type="button" class="pill glass" data-scroll="photos">See photos</button></div></div>
     </section>
     <div class="view home-more" data-view-id="home">
+      <section class="sec stories reveal" id="stories" aria-roledescription="carousel" aria-labelledby="st-h">
+        <h2 id="st-h">Every journey, <em>every story.</em></h2>
+        <p class="lead">Real trips, upfront prices, one Xpander.</p>
+        <div class="st-track" id="st-track" tabindex="0" role="group" aria-label="Highlights. Use the arrow keys or swipe.">
+          <article class="st-card" aria-roledescription="slide" aria-label="1 of 4">
+            <div class="st-media"><img src="assets/promo-rates.webp" alt="Everyride rates poster: Ano? Tara G! Rent a ride. 2,500 pesos per 24 hours within Metro Manila, 3,200 pesos outside. Book 3 days, get 1 day free." width="1200" height="1005" loading="lazy" style="--pos:100% 40%"></div>
+            <div class="st-cap"><a class="st-pill" href="#rates">See rates</a><p><b>Rates</b> • From ₱2,500 a day. Book 3 days, get 1 free.</p></div>
+          </article>
+          <article class="st-card" aria-roledescription="slide" aria-label="2 of 4">
+            <div class="st-media"><img src="assets/family-cabatuan.webp" alt="A family poses next to the Everyride Xpander under the Cabatuan, Isabela welcome arch." width="1000" height="1145" loading="lazy" style="--pos:50% 66%"></div>
+            <div class="st-cap"><a class="st-pill" href="booking.html">Book now</a><p><b>Family trips</b> • Seven seats for the people who matter.</p></div>
+          </article>
+          <article class="st-card" aria-roledescription="slide" aria-label="3 of 4">
+            <div class="st-media"><img src="assets/xpander-real-hero.webp" alt="White Mitsubishi Xpander GLS parked under trees." width="1086" height="1448" loading="lazy" style="--pos:50% 72%"></div>
+            <div class="st-cap"><a class="st-pill" href="#fleet">See the car</a><p><b>The car</b> • Mitsubishi Xpander GLS. Automatic, three rows.</p></div>
+          </article>
+          <article class="st-card" aria-roledescription="slide" aria-label="4 of 4">
+            <div class="st-media"><img src="assets/xpander-real-seats.webp" alt="Xpander interior with seats and the sunroof panel." width="1086" height="1448" loading="lazy" style="--pos:50% 55%"></div>
+            <div class="st-cap"><a class="st-pill" href="#photos">Look inside</a><p><b>Inside</b> • Room for the luggage and the long road.</p></div>
+          </article>
+        </div>
+        <div class="st-ctrl"><div class="st-dots" id="st-dots"></div></div>
+      </section>
       <section class="sec reveal" id="photos"><h2>Look inside</h2><p class="lead">Tap a photo to enlarge it.</p><div class="fleet-grid" id="fleet-grid"></div></section>
       <section class="sec reveal" id="how"><h2>Book in three taps.</h2><p class="lead">No account needed. You always see the price before you send anything.</p>
         <ol class="how">
@@ -91,10 +116,10 @@
           <li><i>2</i><h3>Set your dates</h3><p>Pick up and return on a calendar, 12 hours or 1+ days. The price updates live.</p></li>
           <li><i>3</i><h3>Book as a guest</h3><p>Send your request, get a reference like EVR-XXXX, and track it any time.</p></li>
         </ol></section>
-      <section class="sec reveal" id="places"><h2>Where we hand over.</h2><p class="lead">Pick a city and start your booking from there.</p><div id="places-grid"></div></section>
-      <section class="sec reveal" id="rates"><h2>Simple, upfront pricing.</h2><p class="lead">Everything that can change your total, in one place.</p><div class="rates" id="rates-grid"></div></section>
+      <section class="sec reveal" id="places"><h2>Where we <em>hand over.</em></h2><p class="lead">Tap a city to start.</p><div id="places-grid"></div></section>
+      <section class="sec reveal" id="rates"><h2>Simple, <em>upfront</em> pricing.</h2><div class="pricing" id="rates-grid"></div></section>
       <section class="sec reveal" id="faq"><h2>Good to know.</h2><div class="faq" id="faq-list"></div></section>
-      <section class="sec final reveal"><h2>Your next trip starts here.</h2><div class="pills"><a class="pill solid" href="booking.html">Book the Xpander</a></div></section>
+      <section class="sec final reveal"><h2>Your next trip <em>starts here.</em></h2><div class="pills"><a class="pill solid" href="booking.html">Book the Xpander</a></div></section>
     </div>
   </main>
 

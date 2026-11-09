@@ -7,7 +7,7 @@
   const $$ = (s, r = document) => [...r.querySelectorAll(s)];
   const KEY = 'everyride_demo_bookings_v1';   // same key/shape as the main prototype (v30+)
   const DRAFT = 'everyride_draft_v36';
-  const VERSION = 'v41';
+  const VERSION = 'v44';
   const H = 3600e3, D = 24 * H, BUFFER = 3 * H;
   const RATES = { metro: 2500, outside: 3200 };
   const EXTRAS = { seat: { label: 'Child seat', day: 150 }, driver: { label: 'Additional driver', day: 180 } };

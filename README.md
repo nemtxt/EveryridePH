@@ -1,4 +1,6 @@
-# Everyride — Direct (v41)
+# Everyride — Direct (v44)
+
+v43 adds `css/lime.css` (palette + serif accent + lime glow) and makes the landing carousel an endless loop without a pause button.
 
 v41 adds `css/mobile.css` and `js/nav.js`: Apple / Tesla style header and full-screen menu, phone layouts for every page.
 

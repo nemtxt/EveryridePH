@@ -16,13 +16,27 @@
   ];
   $('#ver').textContent = `Direct ${VERSION}`;
   const names = CITIES.map(c => c.l.split(' / ')[0]);
-  $('#rates-grid').innerHTML = [
-    [money(RATES.metro), 'per 24h', 'Pickup in Metro Manila'], [money(RATES.outside), 'per 24h', 'Pickup outside Metro Manila'],
-    ['Book 3, get 1 free', '', 'Every 4th day is free on 1+ day rentals'], ['65%', 'of the day rate', '12-hour rentals, rounded to ₱50'],
-    [money(EXTRAS.seat.day), 'per day', 'Child seat'], [money(EXTRAS.driver.day), 'per day', 'Additional driver'], ['+' + money(ONE_WAY), 'one time', 'Return somewhere else']
-  ].map(([a, b, c]) => `<div class="rate"><b>${esc(a)}</b><span>${esc(b)}</span><p>${esc(c)}</p></div>`).join('');
+  $('#rates-grid').innerHTML = `
+    <div class="price-hero">
+      <div><b>${money(RATES.metro)}</b><span>Metro Manila<br>per 24 hours</span></div>
+      <div><b>${money(RATES.outside)}</b><span>Outside Metro Manila<br>per 24 hours</span></div>
+    </div>
+    <p class="price-deal">Book 3 days, get 1 free.</p>
+    <ul class="price-extras" aria-label="Extras">
+      <li>Child seat <b>${money(EXTRAS.seat.day)}/day</b></li><li>Additional driver <b>${money(EXTRAS.driver.day)}/day</b></li>
+      <li>Return elsewhere <b>${money(ONE_WAY)}</b></li><li>12-hour rental <b>65% of day rate</b></li>
+    </ul>`;
   $('#faq-list').innerHTML = FAQ.map(([q, a]) => `<details><summary>${esc(q)}</summary><p>${esc(a())}</p></details>`).join('');
-  $('#places-grid').innerHTML = PLACES.map(([g, z, list]) => `<h3 class="places-h">${esc(g)} <b>${money(RATES[z])} / 24h</b></h3><div class="places">${list.map(([v, l]) => `<a class="place" href="booking.html?to=${encodeURIComponent(v)}"><span><b>${esc(l)}</b><small>Book from here</small></span><svg aria-hidden="true"><use href="#i-arrow"/></svg></a>`).join('')}</div>`).join('');
+  /* places: one switch, one row of city pills (was 12 stacked cards) */
+  const pg = $('#places-grid');
+  pg.innerHTML = `<div class="zone-tabs" role="tablist" aria-label="Pickup area">${PLACES.map(([g], i) => `<button type="button" role="tab" id="zt-${i}" aria-selected="${i === 0}" aria-controls="zone-panel" data-z="${i}">${esc(g)}</button>`).join('')}</div><div class="city-pills" id="zone-panel" role="tabpanel"></div>`;
+  const showZone = i => {
+    $$('.zone-tabs button', pg).forEach(t => t.setAttribute('aria-selected', t.dataset.z == i));
+    const panel = $('#zone-panel'); panel.setAttribute('aria-labelledby', 'zt-' + i);
+    panel.innerHTML = PLACES[i][2].map(([v, l], k) => `<a class="city-pill" style="--i:${k}" href="booking.html?to=${encodeURIComponent(v)}">${esc(l)}</a>`).join('');
+  };
+  pg.addEventListener('click', e => { const t = e.target.closest('[data-z]'); if (t) showZone(+t.dataset.z); });
+  showZone(0);
   $('#fleet-grid').innerHTML = PHOTOS.map(([src, label]) => `<button type="button" data-zoom="${src}" data-label="${label}" aria-label="Enlarge ${label} photo"><img src="${src}" alt="" loading="lazy"><span>${label}</span></button>`).join('');
 
   const lb = $('#lightbox');
