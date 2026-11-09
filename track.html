@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="app-version" content="v41">
+  <meta name="description" content="Enter your Everyride booking reference to see the status and details of your Xpander rental request.">
+  <title>Track your booking | Everyride</title>
+  <link rel="icon" href="assets/everyride-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="css/track.css">
+  <link rel="stylesheet" href="css/polish.css">
+  <link rel="stylesheet" href="css/vibe.css">
+  <link rel="stylesheet" href="css/apple.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <script src="js/core.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/fx.js" defer></script>
+  <script src="js/track.js" defer></script>
+</head>
+<body data-view="track">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top" id="top">
+    <a class="brand" href="index.html" aria-label="Everyride home"><img src="assets/everyride-logo.webp" alt="" width="40" height="40"><span>every<b>ride</b></span></a>
+    <nav class="links" aria-label="Main">
+      <a href="index.html#fleet">The car</a><a href="index.html#how">How it works</a><a href="index.html#rates">Rates</a><a href="index.html#faq">FAQ</a><a href="track.html" data-page="track">Track booking</a>
+    </nav>
+    <div class="top-actions">
+      <a class="ghost solid book-link" href="booking.html">Book now</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" inert>
+    <nav class="m-main" aria-label="Menu">
+      <a href="booking.html" style="--i:0">Book the Xpander</a>
+      <a href="track.html" data-page="track" style="--i:1">Track booking</a>
+      <a href="index.html#fleet" style="--i:2">The car</a>
+      <a href="index.html#rates" style="--i:3">Rates</a>
+    </nav>
+    <p class="m-label" style="--i:4">Explore</p>
+    <nav class="m-sub" aria-label="Explore">
+      <a href="index.html#photos" style="--i:5">Look inside</a>
+      <a href="index.html#how" style="--i:6">How it works</a>
+      <a href="index.html#places" style="--i:7">Where we hand over</a>
+      <a href="index.html#faq" style="--i:8">FAQ</a>
+    </nav>
+    <p class="m-note" style="--i:9">Frontend demo. No real reservations or payments.</p>
+  </div>
+
+  <main id="main" class="tk">
+    <section class="tk-find" aria-labelledby="tk-title">
+      <span class="tk-icon" aria-hidden="true"><svg><use href="#i-search"/></svg></span>
+      <h1 id="tk-title">Track your booking</h1>
+      <p class="lede">Enter the reference from your confirmation to see your request and its status.</p>
+      <form class="tk-form" id="tk-form" role="search" novalidate>
+        <label class="vh" for="tk-ref">Booking reference</label>
+        <input id="tk-ref" type="text" placeholder="EVR-XXXXXXXX-XXXX" autocomplete="off" autocapitalize="characters" spellcheck="false">
+        <button type="submit" class="next">Find booking</button>
+      </form>
+      <p class="tk-hint" id="tk-hint">Your reference starts with EVR and is on your confirmation pass.</p>
+    </section>
+
+    <section class="tk-result" id="tk-result" aria-live="polite"></section>
+  </main>
+
+  <footer class="foot"><span class="brand-mini">every<b>ride</b> <em id="ver"></em></span><nav class="foot-links" aria-label="Footer"><a href="booking.html">Book the Xpander</a><a href="track.html">Track booking</a><a href="index.html#faq">FAQ</a></nav><span>Frontend demo. No real reservations or payments.</span></footer>
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></symbol>
+  </svg>
+</body>
+</html>

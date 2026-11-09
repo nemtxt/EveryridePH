@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="app-version" content="v41">
+  <meta name="description" content="Rent the Mitsubishi Xpander GLS across Luzon. Pick where and when on a calendar, see your price, and book as a guest.">
+  <meta property="og:title" content="Everyride | Rent with ease. Drive everywhere.">
+  <meta property="og:description" content="One Mitsubishi Xpander GLS, seven seats, Luzon pickups. Book as a guest in under a minute.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/xpander-real-angle.webp">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>Everyride | Rent with ease. Drive everywhere.</title>
+  <link rel="icon" href="assets/everyride-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/polish.css">
+  <link rel="stylesheet" href="css/vibe.css">
+  <link rel="stylesheet" href="css/apple.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <script src="js/core.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/fx.js" defer></script>
+  <script src="js/home.js" defer></script>
+</head>
+<body data-view="home">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top" id="top">
+    <a class="brand" href="index.html" aria-label="Everyride home"><img src="assets/everyride-logo.webp" alt="" width="40" height="40"><span>every<b>ride</b></span></a>
+    <nav class="links" aria-label="Main">
+      <a href="index.html#fleet">The car</a><a href="index.html#how">How it works</a><a href="index.html#rates">Rates</a><a href="index.html#faq">FAQ</a><a href="track.html" data-page="track">Track booking</a>
+    </nav>
+    <div class="top-actions">
+      <a class="ghost solid book-link" href="booking.html">Book now</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" inert>
+    <nav class="m-main" aria-label="Menu">
+      <a href="booking.html" style="--i:0">Book the Xpander</a>
+      <a href="track.html" data-page="track" style="--i:1">Track booking</a>
+      <a href="index.html#fleet" style="--i:2">The car</a>
+      <a href="index.html#rates" style="--i:3">Rates</a>
+    </nav>
+    <p class="m-label" style="--i:4">Explore</p>
+    <nav class="m-sub" aria-label="Explore">
+      <a href="index.html#photos" style="--i:5">Look inside</a>
+      <a href="index.html#how" style="--i:6">How it works</a>
+      <a href="index.html#places" style="--i:7">Where we hand over</a>
+      <a href="index.html#faq" style="--i:8">FAQ</a>
+    </nav>
+    <p class="m-note" style="--i:9">Frontend demo. No real reservations or payments.</p>
+  </div>
+
+  <main id="main">
+    <!-- 0 · HOME -->
+    <section class="view hero" data-view-id="home" aria-labelledby="hero-title">
+      <div class="hero-media" aria-hidden="true"><img src="assets/xpander-real-angle.webp" alt="" fetchpriority="high"></div>
+      <div class="hero-copy">
+        <h1 id="hero-title">Rent with ease.<br><em>Drive everywhere.</em></h1>
+        <p class="sub">One Mitsubishi Xpander GLS. Seven seats. Book as a guest in under a minute.</p>
+      </div>
+
+      <div class="hero-bottom">
+      <form class="prompt" id="ask-form" novalidate>
+        <h2 class="prompt-title" id="prompt-title">Where is your next trip?</h2>
+        <div class="prompt-row">
+          <svg aria-hidden="true"><use href="#i-pin"/></svg>
+          <input id="ask-input" type="text" placeholder="Where to? Try “4 days in Baguio”" autocomplete="off" aria-labelledby="prompt-title">
+          <button type="submit" class="prompt-go" aria-label="Start planning"><svg aria-hidden="true"><use href="#i-arrow"/></svg></button>
+        </div>
+      </form>
+      <a class="hero-more" href="#fleet">Explore the car <span aria-hidden="true">›</span></a>
+      </div>
+    </section>
+
+    <section class="sec showcase reveal" id="fleet" style="--img:url(../assets/xpander-real-front.webp)" aria-labelledby="car-h">
+      <div><h2 id="car-h">Mitsubishi Xpander GLS</h2><p class="lead">Room for the whole family, the luggage and the long road.</p></div>
+      <div><ul class="specs" aria-label="Specs"><li><b>7</b>Seats</li><li><b>3</b>Rows</li><li><b>Auto</b>Transmission</li><li><b>1.5L</b>MIVEC</li></ul>
+      <div class="pills"><a class="pill solid" href="booking.html">Book now</a><button type="button" class="pill glass" data-scroll="photos">See photos</button></div></div>
+    </section>
+    <div class="view home-more" data-view-id="home">
+      <section class="sec reveal" id="photos"><h2>Look inside</h2><p class="lead">Tap a photo to enlarge it.</p><div class="fleet-grid" id="fleet-grid"></div></section>
+      <section class="sec reveal" id="how"><h2>Book in three taps.</h2><p class="lead">No account needed. You always see the price before you send anything.</p>
+        <ol class="how">
+          <li><i>1</i><h3>Pick your places</h3><p>Choose a Luzon city to start from. Your rate is set by where you pick up.</p></li>
+          <li><i>2</i><h3>Set your dates</h3><p>Pick up and return on a calendar, 12 hours or 1+ days. The price updates live.</p></li>
+          <li><i>3</i><h3>Book as a guest</h3><p>Send your request, get a reference like EVR-XXXX, and track it any time.</p></li>
+        </ol></section>
+      <section class="sec reveal" id="places"><h2>Where we hand over.</h2><p class="lead">Pick a city and start your booking from there.</p><div id="places-grid"></div></section>
+      <section class="sec reveal" id="rates"><h2>Simple, upfront pricing.</h2><p class="lead">Everything that can change your total, in one place.</p><div class="rates" id="rates-grid"></div></section>
+      <section class="sec reveal" id="faq"><h2>Good to know.</h2><div class="faq" id="faq-list"></div></section>
+      <section class="sec final reveal"><h2>Your next trip starts here.</h2><div class="pills"><a class="pill solid" href="booking.html">Book the Xpander</a></div></section>
+    </div>
+  </main>
+
+  <footer class="foot"><span class="brand-mini">every<b>ride</b> <em id="ver"></em></span><nav class="foot-links" aria-label="Footer"><a href="booking.html">Book the Xpander</a><a href="track.html">Track booking</a><a href="index.html#faq">FAQ</a></nav><span>Frontend demo. No real reservations or payments.</span></footer>
+
+  <dialog id="lightbox" class="lightbox" aria-label="Photo"><img alt=""><form method="dialog"><button class="icon" aria-label="Close">✕</button></form></dialog>
+
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10a8 8 0 1 0-16 0c0 5 8 11 8 11s8-6 8-11Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+  </svg>
+</body>
+</html>

@@ -1,0 +1,106 @@
+/* Everyride v36 polish: friendlier sizes, purposeful motion. Loads last; remove this file to get v35 back. */
+@view-transition{navigation:auto}
+:root{--ease:cubic-bezier(.2,.8,.2,1)}
+.top{view-transition-name:top}
+
+/* ---- landing: one orchestrated load sequence ---- */
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes settle{from{transform:scale(1.14);opacity:0}to{transform:scale(1.06);opacity:.55}}
+@keyframes bob{50%{transform:translateY(-6px)}}
+.hero .eyebrow,.hero h1,.hero .sub,.hero .prompt,.hero .facts,.hero .hero-track{animation:rise .8s var(--ease) both}
+.hero .eyebrow{animation-delay:.05s}.hero h1{animation-delay:.15s}.hero .sub{animation-delay:.28s}
+.hero .prompt{animation-delay:.42s}.hero .facts{animation-delay:.6s}.hero .hero-track{animation-delay:.7s}
+.hero-media img{animation:settle 1.6s var(--ease) backwards}
+.dot{animation:bob 2.4s ease-in-out infinite}
+
+/* live trip reader under the prompt */
+.prompt-row{transition:box-shadow .2s}
+.prompt-go{transition:background .15s,transform .15s}
+.prompt-go:hover{transform:translateX(3px)}
+.prompt-go.ready{animation:nudge 1.4s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(4px)}}
+
+/* ---- buttons answer the finger ---- */
+.cta,.next,.ghost,.pick,.city,.place{transition:transform .18s var(--ease),background .15s,box-shadow .2s,border-color .15s}
+.cta:active:not(:disabled),.next:active:not(:disabled),.ghost:active{transform:scale(.97)}
+.next{border-radius:14px;min-height:50px;font-size:15px}
+.next svg{transition:transform .2s var(--ease)}.next:hover:not(:disabled) svg{transform:translateX(4px)}
+.next:not(:disabled):hover{box-shadow:0 10px 26px rgba(20,64,43,.25);transform:translateY(-1px)}
+
+/* ---- scroll reveal, staggered children ---- */
+.reveal{transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal .how li,.reveal .rate,.reveal .place,.reveal .fleet-grid button,.reveal .faq details{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease),border-color .2s,box-shadow .2s;transition-delay:calc(var(--i,0)*70ms)}
+.reveal.in .how li,.reveal.in .rate,.reveal.in .place,.reveal.in .fleet-grid button,.reveal.in .faq details{opacity:1;transform:none}
+.how li:hover,.place:hover{transition-delay:0s}
+.how{position:relative}
+.how::before{content:"";position:absolute;left:12%;right:12%;top:44px;border-top:3px dashed var(--line2);z-index:0}
+.how li{position:relative;z-index:1}
+.how li i{transition:transform .3s var(--ease)}.how li:hover i{transform:rotate(-8deg) scale(1.1)}
+@media(max-width:900px){.how::before{display:none}}
+.fleet-grid button:hover{box-shadow:0 14px 30px rgba(10,31,18,.18)}
+.rate b{font-variant-numeric:tabular-nums}
+.faq details::details-content{block-size:0;overflow:clip;transition:block-size .35s var(--ease),content-visibility .35s allow-discrete}
+.faq details[open]::details-content{block-size:auto}
+.faq{interpolate-size:allow-keywords}
+.faq summary::after{transition:transform .3s var(--ease)}.faq details[open] summary::after{transform:rotate(180deg)}
+.lightbox[open]{animation:pop .3s var(--ease)}
+.lightbox::backdrop{animation:fade .3s both}
+@keyframes fade{from{opacity:0}}
+
+/* sticky call-to-action on phones, after the hero scrolls away */
+.sticky-cta{position:fixed;left:50%;bottom:16px;z-index:60;transform:translate(-50%,140%);display:none;align-items:center;gap:10px;padding:14px 22px;border-radius:99px;background:var(--lime);color:var(--ink);font:700 15px var(--display);text-decoration:none;box-shadow:0 14px 34px rgba(0,0,0,.28);transition:transform .45s var(--ease);white-space:nowrap}
+.sticky-cta.on{transform:translate(-50%,0)}
+@media(max-width:720px){.sticky-cta{display:inline-flex}}
+
+/* ---- booking: easier to read and tap, steps that slide ---- */
+.lede{font-size:15px}
+.sel>span{font-size:13px}.sel select{height:52px;font-size:15px}
+.len-row b{font-size:15px}.len-row small{font-size:13px}.seg button{font-size:14px;padding:11px 20px}
+.cal-head small,.tl small,.sum-card .note{font-size:11px}.cal-head h2{font-size:18px}.cal-month{font-size:15px}.cal-dow span{font-size:12px}
+.day{height:48px;font-size:16px;border-radius:12px;transition:background .2s,color .2s,transform .15s var(--ease)}
+.day:hover:not(:disabled){transform:scale(1.08)}
+.cal-nav button{width:38px;height:36px;border-radius:10px}
+.sum-card h3{font-size:16px}.tl b{font-size:17px}.time-pick select{font-size:14px}.sum-row{font-size:14px}.note{font-size:12px}
+.stepper li{font-size:14px}.stepper i{width:26px;height:26px;font-size:12px}
+.stepper .now i{animation:ring 2s ease-in-out infinite}
+@keyframes ring{50%{box-shadow:0 0 0 6px rgba(20,64,43,.12)}}
+.foot-bar>span{font-size:13px}.foot-bar .back{font-size:14px}
+.input span{font-size:14px}.status{font-size:16px}
+@keyframes pop{from{opacity:0;transform:scale(.88)}to{opacity:1;transform:none}}
+@keyframes band{from{opacity:0}to{opacity:1}}
+.day.start,.day.end{animation:pop .35s var(--ease)}
+.day.mid,.day.hov{animation:band .3s ease both}
+@keyframes slide-fwd{from{opacity:0;transform:translateX(28px)}to{opacity:1;transform:none}}
+@keyframes slide-back{from{opacity:0;transform:translateX(-28px)}to{opacity:1;transform:none}}
+.bstep{animation:slide-fwd .45s var(--ease) both}
+body[data-dir="back"] .bstep{animation-name:slide-back}
+.status.ok svg{stroke-dasharray:26;animation:draw .6s .1s ease both}
+@keyframes draw{from{stroke-dashoffset:26}to{stroke-dashoffset:0}}
+.gallery-main img{transition:opacity .25s}.gallery-main img.swap{opacity:0}
+.field-err:not([hidden]),.err:not([hidden]){animation:shake .4s}
+@keyframes shake{20%,60%{transform:translateX(-5px)}40%,80%{transform:translateX(5px)}}
+input[aria-invalid="true"]{animation:shake .4s}
+.toast{animation:toast .35s var(--ease)}
+@keyframes toast{from{opacity:0;transform:translate(-50%,16px)}}
+
+/* ---- confirmation + tracking: the ticket lands, the timeline fills ---- */
+@keyframes drop{0%{opacity:0;transform:translateY(-40px) rotate(-2.5deg)}60%{opacity:1;transform:translateY(6px) rotate(.6deg)}100%{transform:none}}
+.ticket{animation:drop .9s var(--ease) both}
+.pass-kicker,.pass-wrap h2{animation:rise .6s var(--ease) both}
+.pass-actions>*,.next-steps li,.tk-card{animation:rise .6s var(--ease) both}
+.pass-actions>:nth-child(2),.next-steps li:nth-child(2),.tk-card:nth-child(2){animation-delay:.1s}
+.pass-actions>:nth-child(3),.next-steps li:nth-child(3),.tk-card:nth-child(3){animation-delay:.2s}
+.pass-actions>:nth-child(4){animation-delay:.3s}
+.timeline li::before{transform-origin:left;transition:transform .8s var(--ease)}
+.timeline li.done::before{animation:fill .8s .5s var(--ease) both}
+@keyframes fill{from{transform:scaleX(0)}to{transform:none}}
+.bars svg rect{transform-origin:bottom;animation:grow .6s .4s var(--ease) both}
+@keyframes grow{from{transform:scaleY(0)}}
+.tk-icon{animation:bob 3s ease-in-out infinite}
+.confetti{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:90}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .reveal,.reveal .how li,.reveal .rate,.reveal .place,.reveal .fleet-grid button,.reveal .faq details{opacity:1!important;transform:none!important}
+  .hero-media img{opacity:.55}
+}

@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#000000">
+  <meta name="app-version" content="v41">
+  <title>Book the Xpander | Everyride</title>
+  <link rel="icon" href="assets/everyride-logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="css/polish.css">
+  <link rel="stylesheet" href="css/vibe.css">
+  <link rel="stylesheet" href="css/apple.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <link rel="stylesheet" href="css/mobile.css">
+  <script src="js/core.js" defer></script>
+  <script src="js/nav.js" defer></script>
+  <script src="js/fx.js" defer></script>
+  <script src="js/booking.js" defer></script>
+</head>
+<body data-view="booking" data-step="dates">
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="top" id="top">
+    <a class="brand" href="index.html" aria-label="Everyride home"><img src="assets/everyride-logo.webp" alt="" width="40" height="40"><span>every<b>ride</b></span></a>
+    <nav class="links" aria-label="Main">
+      <a href="index.html#fleet">The car</a><a href="index.html#how">How it works</a><a href="index.html#rates">Rates</a><a href="index.html#faq">FAQ</a><a href="track.html" data-page="track">Track booking</a>
+    </nav>
+    <div class="top-actions">
+      <a class="ghost solid book-link" href="booking.html">Book now</a>
+      <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu" aria-label="Open menu"><span></span><span></span></button>
+    </div>
+  </header>
+  <div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Menu" inert>
+    <nav class="m-main" aria-label="Menu">
+      <a href="booking.html" style="--i:0">Book the Xpander</a>
+      <a href="track.html" data-page="track" style="--i:1">Track booking</a>
+      <a href="index.html#fleet" style="--i:2">The car</a>
+      <a href="index.html#rates" style="--i:3">Rates</a>
+    </nav>
+    <p class="m-label" style="--i:4">Explore</p>
+    <nav class="m-sub" aria-label="Explore">
+      <a href="index.html#photos" style="--i:5">Look inside</a>
+      <a href="index.html#how" style="--i:6">How it works</a>
+      <a href="index.html#places" style="--i:7">Where we hand over</a>
+      <a href="index.html#faq" style="--i:8">FAQ</a>
+    </nav>
+    <p class="m-note" style="--i:9">Frontend demo. No real reservations or payments.</p>
+  </div>
+
+  <main id="main" class="bk">
+    <ol class="stepper" id="stepper" aria-label="Booking steps"></ol>
+
+    <!-- 1 · DATES -->
+    <section class="bstep" data-step="dates" aria-labelledby="t-dates">
+      <h1 id="t-dates">Pick your rental dates</h1>
+      <p class="lede">Set your pickup, return, and rental duration.</p>
+
+      <div class="loc-row">
+        <label class="sel"><span>Pickup location</span><select id="pickup"></select></label>
+        <label class="sel"><span>Return location</span><select id="return"></select></label>
+      </div>
+
+      <div class="len-row">
+        <div><b>How long will you need it?</b><small>12 hours or 24 hours and more.</small></div>
+        <div class="seg" role="group" aria-label="Rental length">
+          <button type="button" data-mode="half" aria-pressed="false">Half day · 12h</button>
+          <button type="button" data-mode="days" aria-pressed="true">Whole day · 24h+</button>
+        </div>
+      </div>
+
+      <div class="cal-grid">
+        <div class="cal-card">
+          <div class="cal-head">
+            <div><small>YOUR RENTAL DATES</small><h2 id="cal-title">Choose your pickup date</h2></div>
+            <div class="cal-nav">
+              <button type="button" id="cal-prev" aria-label="Previous month"><svg aria-hidden="true"><use href="#i-chev-l"/></svg></button>
+              <button type="button" id="cal-next" aria-label="Next month"><svg aria-hidden="true"><use href="#i-chev-r"/></svg></button>
+            </div>
+          </div>
+          <p class="cal-month" id="cal-month" aria-live="polite"></p>
+          <div class="cal-dow" aria-hidden="true"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+          <div class="cal-days" id="cal-days"></div>
+        </div>
+
+        <aside class="sum-card" aria-label="Your rental summary" aria-live="polite">
+          <h3>Your rental summary</h3>
+          <ol class="tl">
+            <li><small>PICKUP</small><b id="s-pick">—</b>
+              <label class="time-pick"><span class="vh">Pick-up time</span><select id="p-time"></select></label></li>
+            <li><small>RETURN</small><b id="s-ret">Select a return date</b></li>
+          </ol>
+          <div class="sum-row"><span>Duration</span><b id="s-dur">—</b></div>
+          <div class="sum-row"><span>Estimated rate</span><b id="s-est">Choose a pickup location</b></div>
+          <p class="note" id="s-note"></p>
+        </aside>
+      </div>
+      <p class="err" id="dates-error" role="alert" hidden></p>
+      <div class="foot-bar"><span id="foot-est">Guest checkout available</span><button type="button" class="next" id="to-car">Next: Your Xpander <svg aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+    </section>
+
+    <!-- 2 · YOUR XPANDER -->
+    <section class="bstep" data-step="car" hidden aria-labelledby="t-car">
+      <h1 id="t-car">Your Xpander</h1>
+      <p class="lede">Check availability, add extras and see your price.</p>
+      <div class="split">
+        <div class="gallery">
+          <div class="gallery-main"><img id="g-main" src="assets/xpander-real-front.webp" alt="Everyride Mitsubishi Xpander GLS"></div>
+          <div class="gallery-thumbs" id="g-thumbs"></div>
+        </div>
+        <div class="stack">
+          <div>
+            <h2 class="car-name">Mitsubishi Xpander GLS</h2>
+            <ul class="chips"><li>7 seats</li><li>3 rows</li><li>Automatic</li><li>1.5L MIVEC</li></ul>
+          </div>
+          <div class="trip-line" id="trip-line"></div>
+          <div class="status" id="avail" role="status"></div>
+          <fieldset class="extras"><legend>Add-ons</legend>
+            <label class="switch"><input type="checkbox" data-extra="seat"><span class="track"></span> Child seat <small>₱150 / day</small></label>
+            <label class="switch"><input type="checkbox" data-extra="driver"><span class="track"></span> Additional driver <small>₱180 / day</small></label>
+          </fieldset>
+          <div class="price" id="price-review"></div>
+        </div>
+      </div>
+      <div class="foot-bar"><button type="button" class="back" data-go="dates"><svg aria-hidden="true"><use href="#i-back"/></svg> Edit dates</button><button type="button" class="next" id="to-details">Next: Your details <svg aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+    </section>
+
+    <!-- 3 · DETAILS -->
+    <section class="bstep" data-step="details" hidden aria-labelledby="t-details">
+      <h1 id="t-details">Who's driving?</h1>
+      <p class="lede">Book as a guest. No account needed.</p>
+      <div class="split narrow">
+        <form class="stack" id="guest-form" novalidate>
+          <label class="input"><span>Full name</span><input name="name" autocomplete="name" required placeholder="Juan Dela Cruz" aria-describedby="e-name"><small class="field-err" id="e-name" role="alert" hidden></small></label>
+          <label class="input"><span>Email</span><input name="email" type="email" autocomplete="email" required placeholder="you@example.com" aria-describedby="e-email"><small class="field-err" id="e-email" role="alert" hidden></small></label>
+          <label class="input"><span>Mobile number</span><input name="phone" type="tel" autocomplete="tel" required placeholder="09XX XXX XXXX" aria-describedby="e-phone"><small class="field-err" id="e-phone" role="alert" hidden></small></label>
+          <label class="check"><input type="checkbox" name="agree"> <span>I understand this is a demo request. Nothing is charged or reserved yet.</span></label>
+          <small class="field-err" id="e-agree" role="alert" hidden></small>
+          <p class="err" id="form-error" role="alert" hidden></p>
+        </form>
+        <aside class="summary" id="summary-details" aria-label="Booking summary"></aside>
+      </div>
+      <div class="foot-bar"><button type="button" class="back" data-go="car"><svg aria-hidden="true"><use href="#i-back"/></svg> Back</button><button type="submit" form="guest-form" class="next">Send booking request <svg aria-hidden="true"><use href="#i-arrow"/></svg></button></div>
+    </section>
+
+    <!-- 4 · CONFIRMATION -->
+    <section class="bstep pass-view" data-step="pass" hidden aria-labelledby="pass-title">
+      <div class="pass-wrap" id="pass-wrap"></div>
+    </section>
+  </main>
+
+  <footer class="foot"><span class="brand-mini">every<b>ride</b> <em id="ver"></em></span><nav class="foot-links" aria-label="Footer"><a href="booking.html">Book the Xpander</a><a href="track.html">Track booking</a><a href="index.html#faq">FAQ</a></nav><span>Frontend demo. No real reservations or payments.</span></footer>
+
+  <div class="toast" id="toast" role="status" hidden></div>
+
+  <svg class="sprite" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M4 12h16m-6-6 6 6-6 6"/></symbol>
+    <symbol id="i-back" viewBox="0 0 24 24"><path d="M20 12H4m6 6-6-6 6-6"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-chev-l" viewBox="0 0 24 24"><path d="m15 6-6 6 6 6"/></symbol>
+    <symbol id="i-chev-r" viewBox="0 0 24 24"><path d="m9 6 6 6-6 6"/></symbol>
+  </svg>
+</body>
+</html>
